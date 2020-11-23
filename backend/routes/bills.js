@@ -6,7 +6,7 @@ const db = require('../db');
 router.get('/mybills', function(req, res) {
       db.query("SELECT * FROM bills ORDER BY bill_id DESC",(err,row)=>{
         if(err) res.send({success:false,message:"Error"})
-        if(row.length>0){
+        else if(row.length>0){
         res.send({success:true,data:row,message:"Success"})
         } else{
           res.send({success:false,message:"No data found!"})
@@ -17,7 +17,7 @@ router.get('/mybills', function(req, res) {
 router.get('/sales', function(req, res) {
   db.query("SELECT * FROM bills",(err,row)=>{
     if(err) res.send({success:false,message:"Error"})
-    if(row.length>0){
+    else if(row.length>0){
       let today=0;
       let month=0;
       let year=0;

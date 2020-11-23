@@ -6,7 +6,7 @@ const db = require('../db');
 router.get('/myitems', function(req, res) {
       db.query("SELECT * FROM items",(err,row)=>{
         if(err) res.send({success:false,message:"Error"})
-        if(row.length>0){
+        else if(row.length>0){
         res.send({success:true,data:row,message:"Success"})
         } else{
           res.send({success:false,message:"No data found!"})
